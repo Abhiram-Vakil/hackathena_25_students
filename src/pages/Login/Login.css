@@ -1,0 +1,57 @@
+.loginPage{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    height: 29px;
+}
+
+.squid{
+    width: 247px;
+    height: 88px;
+}
+
+.loginHead{
+    color: #000;
+    font-family: "Titillium Web";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.loginP{
+    color: #000;
+    font-family: "Titillium Web";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.inputSection input{
+    width: 369px;
+    height: 47px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid #05050A;
+    color: rgba(0, 0, 0, 0.43);
+    font-family: "Titillium Web";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.loginButtons{
+    display: flex;
+}
+
+.loginButton1{
+    width: 170px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    background: rgba(186, 4, 3, 0.77);
+}
