@@ -1,0 +1,16 @@
+.addbtn{
+    border-radius: 7px;
+    background: rgba(186, 4, 3, 0.77); 
+    width: 136.372px;
+    height: 50px;
+    flex-shrink: 0;
+    border: none;
+    color: #FFF;
+    font-family: "Titillium Web";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    align-self: flex-end;
+    margin-left: 70%;
+}
