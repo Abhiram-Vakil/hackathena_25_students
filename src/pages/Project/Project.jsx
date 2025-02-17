@@ -1,17 +1,16 @@
 import React from 'react'
-import './profile.css'
+import './Project.css'
 import Header from '../../components/Header/Header'
 import Titles from '../../components/Titles/Titles'
 
-function Profile() {
+function Project() {
   return (
     <div>
         <Header/>
-        <Titles title="Profile" sub="It’s all about you !"/>
-
-      Profile
+        <Titles title={"Project Title"} sub={"Team Name"}></Titles>
+      Project
     </div>
   )
 }
 
-export default Profile
+export default Project
