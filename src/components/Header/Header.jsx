@@ -4,10 +4,13 @@ import hacklogo from "../../assets/logo.svg"
 import './Header.css'
 
 function Header() {
+
+
   return (
     <div className='header'>
         <img src={hacklogo} alt=""  className='hlogo'/>
         <img src={squidlogo} alt="" className='slogo'/>
+
     </div>
   )
 }
