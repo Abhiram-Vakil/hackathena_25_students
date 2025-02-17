@@ -1,0 +1,90 @@
+.profilesection img{
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+}
+
+.profilesection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.profilesection h1,h2{
+    margin: 0px;
+}
+
+.profilesection h1{
+    color: #500000;
+    font-family: "Titillium Web";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.profilesection h2{
+    color: #500000;
+    font-family: "Titillium Web";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;    
+}
+
+.member{
+    color: #000;
+    font-family: "Titillium Web";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left:25px ;
+}
+
+.memberssection{
+    display: flex;
+    flex-direction: column;
+    gap:21px ;
+}
+
+.sec1 ,.sec2{
+    display: flex;
+    gap: 10px;
+}
+.sec2{
+   margin-left:20%;
+}
+.sec1{
+    margin-left:5%;
+ }
+
+.indmember{
+    display: flex;
+    border-radius: 18px;
+    border: 1px solid #000;
+    width: 142px;
+    height: 38px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.indmember p{
+    color: #000;
+    font-family: "Titillium Web";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;   
+}
+
+.indmember img{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-left: 4px;
+    margin-right: 5px;
+}
