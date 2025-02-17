@@ -8,9 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@ionic/react':
+        specifier: ^8.4.3
+        version: 8.4.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@ionic/react-router':
+        specifier: ^8.4.3
+        version: 8.4.3(react-dom@19.0.0(react@19.0.0))(react-router-dom@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@supabase/supabase-js':
         specifier: ^2.48.1
         version: 2.48.1
+      ionicons:
+        specifier: ^7.4.0
+        version: 7.4.0
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -345,6 +354,23 @@ packages:
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
+  '@ionic/core@8.4.3':
+    resolution: {integrity: sha512-U9HdZ32bre6OKA5akJVmQMxNB8Art3Nqdn3s7m2W83I5NhLg9Tehaf8ua8jxPZtxCa1nuN7tUbzHmMCkcdqDTw==}
+
+  '@ionic/react-router@8.4.3':
+    resolution: {integrity: sha512-eY73b99W/KTX9uNfnx9j7mfmSp3yHVfTFukvwvsNQKK6dIQpcpO3QtbVIzAA8Y4VgD6DIdG+bNh535vvYVTz4g==}
+    peerDependencies:
+      react: '>=16.8.6'
+      react-dom: '>=16.8.6'
+      react-router: ^5.0.1
+      react-router-dom: ^5.0.1
+
+  '@ionic/react@8.4.3':
+    resolution: {integrity: sha512-AqwmoRCjTDBIgmywE6VnOOacOry21ma6TWMS8Dg8ZGu41rT6edDSmX/lKvAAV+jg4TkjE/U5n//OxzHBY/0+Zg==}
+    peerDependencies:
+      react: '>=16.8.6'
+      react-dom: '>=16.8.6'
+
   '@jridgewell/gen-mapping@0.3.8':
     resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
     engines: {node: '>=6.0.0'}
@@ -457,6 +483,16 @@ packages:
     resolution: {integrity: sha512-0PVwmgzZ8+TZ9oGBmdZoQVXflbvuwzN/HRclujpl4N/q3i+y0lqLw8n1bXA8ru3sApDjlmONaNAuYr38y1Kr9w==}
     cpu: [x64]
     os: [win32]
+
+  '@stencil/core@4.20.0':
+    resolution: {integrity: sha512-WPrTHFngvN081RY+dJPneKQLwnOFD60OMCOQGmmSHfCW0f4ujPMzzhwWU1gcSwXPWXz5O+8cBiiCaxAbJU7kAg==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
+
+  '@stencil/core@4.26.0':
+    resolution: {integrity: sha512-+0Inu+dJ9/LgWSskcZwx7v17v4GILcwIYxNgD+OuK0U+D5z61WsxWw7yHkYG5OqGPBijsJMVssYRx/Tn+e7F9A==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
 
   '@supabase/auth-js@2.67.3':
     resolution: {integrity: sha512-NJDaW8yXs49xMvWVOkSIr8j46jf+tYHV0wHhrwOaLLMZSFO4g6kKAf+MfzQ2RaD06OCUkUHIzctLAxjTgEVpzw==}
@@ -914,6 +950,9 @@ packages:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
 
+  ionicons@7.4.0:
+    resolution: {integrity: sha512-ZK94MMqgzMCPPMhmk8Ouu6goyVHFIlw/ACP6oe3FrikcI0N7CX0xcwVaEbUc0G/v3W0shI93vo+9ve/KpvcNhQ==}
+
   is-array-buffer@3.0.5:
     resolution: {integrity: sha512-DDfANUiiG2wC1qawP66qlTugJeL5HyzMpfr8lLK+jMQirGzNod0B12cFB/9q838Ru27sBwfw78/rdoU7RERz6A==}
     engines: {node: '>= 0.4'}
@@ -1319,6 +1358,9 @@ packages:
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
+  tslib@2.8.1:
+    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
   turbo-stream@2.4.0:
     resolution: {integrity: sha512-FHncC10WpBd2eOmGwpmQsWLDoK4cqsA/UT/GqNoaKOQnT8uzhtCbg3EoUDMvqpOSAI0S26mr0rkjzbOO6S3v1g==}
 
@@ -1700,6 +1742,29 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
+  '@ionic/core@8.4.3':
+    dependencies:
+      '@stencil/core': 4.20.0
+      ionicons: 7.4.0
+      tslib: 2.8.1
+
+  '@ionic/react-router@8.4.3(react-dom@19.0.0(react@19.0.0))(react-router-dom@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@ionic/react': 8.4.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-router: 7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-router-dom: 7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      tslib: 2.8.1
+
+  '@ionic/react@8.4.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@ionic/core': 8.4.3
+      ionicons: 7.4.0
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      tslib: 2.8.1
+
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
       '@jridgewell/set-array': 1.2.1
@@ -1773,6 +1838,10 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.34.6':
     optional: true
+
+  '@stencil/core@4.20.0': {}
+
+  '@stencil/core@4.26.0': {}
 
   '@supabase/auth-js@2.67.3':
     dependencies:
@@ -2410,6 +2479,10 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.0
 
+  ionicons@7.4.0:
+    dependencies:
+      '@stencil/core': 4.26.0
+
   is-array-buffer@3.0.5:
     dependencies:
       call-bind: 1.0.8
@@ -2890,6 +2963,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tr46@0.0.3: {}
+
+  tslib@2.8.1: {}
 
   turbo-stream@2.4.0: {}
 
