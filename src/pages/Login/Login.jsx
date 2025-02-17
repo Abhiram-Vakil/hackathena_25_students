@@ -7,21 +7,25 @@ import "./Login.css"
 function Login() {
   return (
     <div className='loginPage'>
+      <div className='logintop'>
         <img src={logo} alt="" className='logo' />
         <img src={squid} alt="" className='squid' />
-        <h1 className='loginHead'>HELLO DEV 👋</h1>
-        <p className='loginP'>Welcome to the HackAthena official  app</p>
+        <div className='ltitle'>
+          <h1 className='loginHead'>HELLO DEV 👋</h1>
+          <p className='loginP'>Welcome to the HackAthena official  app</p>
+        </div>
+       
         <div className='inputSection'>
             <input type="text" placeholder="Enter Team id"/>
             <input type="password" placeholder="Enter Password" ty/>
         </div>
         
         <div className='loginButtons'>
-            <button className='loginButton1'>login</button>
-            <button className='loginButton2'>contact</button>
+            <button className='loginButton1'>Login</button>
+            <button className='loginButton2'>Contact</button>
         </div>
-        
-        <img src={squidgame} alt="" />
+      </div>
+        <img src={squidgame} alt="" className='squidgame' />
     </div>
   )
 }
