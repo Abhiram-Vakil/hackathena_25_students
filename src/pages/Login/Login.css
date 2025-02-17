@@ -12,6 +12,7 @@
     margin-top: 48px;
     height: 32px;
     
+    
 }
 
 .squid{
@@ -19,6 +20,7 @@
     width: 247px;
     height: 88px;
     align-self: center;
+    margin-bottom: 96px;
     
 }
 
@@ -30,6 +32,7 @@
     font-weight: 600;
     line-height: normal;
     margin: 0px;
+    
 }
 
 .loginP{
@@ -48,9 +51,10 @@
     flex-direction: column;
     gap: 15px;
     margin-bottom: 19px ;
+
 }
 .inputSection input{
-    width: 369px;
+    width: 350px;
     height: 47px;
     flex-shrink: 0;
     border-radius: 6px;
@@ -61,6 +65,7 @@
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    padding: 0px 13px 0px 13px;
 }
 
 
@@ -113,6 +118,3 @@
     flex-direction: column;
 }
 
-.ltitle{
-    align-self: center;
-}
