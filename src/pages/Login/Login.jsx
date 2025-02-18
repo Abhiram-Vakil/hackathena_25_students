@@ -38,7 +38,7 @@ function Login() {
     else
     {
       console.log(data);
-      login(data.user.email);
+      login(data.user.email,data.user.id);
       navigate('/');
     }
   };
