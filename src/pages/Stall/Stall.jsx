@@ -12,10 +12,10 @@ import { useState } from "react";
 
 function Stall() {
   const slideData = [
-    { name: "Frutty",price:"Rs.52", img: Frutty, link: "/stallopen" },
-    { name: "Maza",price:"Rs.10", img: Frutty, link: "/stallopen" },
-    { name: "shake",price:"Rs.80", img: Frutty, link: "/stallopen" },
-    { name: "boost",price:"Rs.82", img: Frutty, link: "/stallopen" },
+    { name: "Frutty",price:"Rs.52", img: Frutty },
+    { name: "Maza",price:"Rs.10", img: Frutty },
+    { name: "shake",price:"Rs.80", img: Frutty },
+    { name: "boost",price:"Rs.82", img: Frutty },
    
   ];
   
