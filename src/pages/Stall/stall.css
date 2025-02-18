@@ -52,3 +52,53 @@
   .swiper-slide:nth-child(10n) {
     background-color: rgb(54, 94, 77);
   }
+
+  .mySwiper{
+   margin-top: 50px;
+  }
+
+  .stallitemname{
+    margin-top:40px ;
+    margin-bottom: 0px;
+    color: #000;
+text-align: center;
+font-family: "Titillium Web";
+font-size: 40px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }
+  .stallitemprice{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    color: #BA0403;
+font-family: "Titillium Web";
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+  }
+
+  .kada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.stallbtn{
+  border: none;
+    margin-bottom: 240px;
+    border-radius: 7px;
+    background: rgba(186, 4, 3, 0.77);
+    width: 136.372px;
+    height: 50px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: "Titillium Web";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }

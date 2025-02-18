@@ -26,6 +26,11 @@ function Project() {
       stage: "04",
       text: "Optimized backend services for faster performance",
       time: "12.30 pm"
+    },
+    {
+      stage: "05",
+      text: "Optimized backend services for faster performance",
+      time: "12.30 pm"
     }
   ];
 
@@ -33,7 +38,10 @@ function Project() {
     <div>
         <Header/>
         <Titles title={"Project Title"} sub={"Team Name"}></Titles>
-        <button className='addbtn'>Add Update</button>
+        <div className='buttondiv'>
+          <button className='addbtn'>Add Update</button>
+        </div>
+        
         <div className='sections'>
           {sectionData.map((item, index) => (
         <Section key={index} stage={item.stage} text={item.text} time={item.time} />
