@@ -8,10 +8,12 @@ import Stall from './pages/Stall/Stall';
 import Profile from './pages/Profile/Profile';
 import Project from './pages/Project/Project';
 import StallOpen from './components/StallOpen/StallOpen';
+import { UserProvider } from './context/UserContext/UserContext';
 
 function AppContent() {
   const location = useLocation();
   return (
+    <UserProvider>
     <>
       
       <Routes>
@@ -25,6 +27,7 @@ function AppContent() {
       {location.pathname !== "/login" && <Navbar className='mindaa' />}
 
     </>
+    </UserProvider>
   );
 }
 
