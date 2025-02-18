@@ -1,4 +1,5 @@
 .addbtn{
+    align-self: flex-end;
     border-radius: 7px;
     background: rgba(186, 4, 3, 0.77); 
     width: 136.372px;
@@ -11,6 +12,14 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    align-self: flex-end;
-    margin-left: 70%;
+    margin-right: 22px;
+    margin-bottom: 17px;
+    
+}
+
+.buttondiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
 }

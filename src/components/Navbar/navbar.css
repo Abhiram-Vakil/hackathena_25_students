@@ -16,6 +16,8 @@ margin-bottom: 17px;
 display: inline-flex;
 align-items: center;
 gap: 59px;
+align-items: center;
+justify-content: center;
 /* justify-content:space-around; */
 
   }
