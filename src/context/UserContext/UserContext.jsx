@@ -14,8 +14,8 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   // Login function - Save user data to state and localStorage
-  const login = (email) => {
-    const userData = { email };
+  const login = (email,id) => {
+    const userData = { email,id };
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));  // Save to localStorage
   };

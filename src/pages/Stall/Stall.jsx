@@ -7,10 +7,89 @@ import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
 import './stall.css';
 import Frutty from '../../../public/images/packet-jiuce.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import { useUser } from '../../context/UserContext/UserContext';
+import supabase from '../../../supabase_config';
+import { useEffect } from 'react';
+import axios from 'axios';
+
+const TELEGRAM_BOT_TOKEN =  import.meta.env.VITE_TELE_TOKEN ;
+const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELE_IDS;
 
 function Stall() {
+  const navigate = useNavigate();
+  const [sanam,setSanam]  = useState([]);
+  const {user} = useUser();
+
+  useEffect(()=>
+  {
+    if (!user)
+    {
+      navigate('/login');
+
+
+    }
+    fetchSanam();
+  });
+
+  const orderItem = async () => {
+    if(!user)
+    {
+      navigate('/login');
+      return;
+    }
+
+    const order = {
+      user_id : user?.id,
+      item_name : sanam[activeIndex]?.item_name
+    }
+
+    const {data,error}  = await supabase.from('orders').insert([order]);
+    if (error)
+    {
+      console.log("Ordering failed !");
+    }
+    else{
+      alert("Order placed !");
+      sendTelegramMessage(order);
+    }
+  };
+
+  const sendTelegramMessage = async(order) => {
+    const message = `🛒 New Order Received!\n\n📌 Item: ${order.item_name}\n👤 Ordered by: ${user?.email || "Unknown User"}`;
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+
+    const chatIds = [1521228209]; // Add your additional chat IDs here
+
+    try {
+      for (let chatId of chatIds) {
+        await axios.post(url, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: "Markdown",
+        });
+        console.log(`Notification sent to chat ID: ${chatId}`);
+      }
+    }
+    catch(error)
+    {
+      console.error("Failed tele",error);
+    }
+  };
+
+  const fetchSanam = async () => {
+    const {data,error} = await supabase.from('stall').select('*');
+
+    if (error)
+    {
+      console.log("Failed loading shop !");
+    }
+    else{
+      setSanam(data);
+    }
+  }
   const slideData = [
     { name: "Frutty",price:"Rs.52", img: Frutty },
     { name: "Maza",price:"Rs.10", img: Frutty },
@@ -35,17 +114,22 @@ function Stall() {
         className="mySwiper"
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
-        {slideData.map((slide, index) => (
+        {sanam.map((slide, index) => (
           <SwiperSlide key={index}>
-            <Link to={slide.link}>
-              <img src={slide.img} alt={slide.name} />
-            </Link>
+            {/* <Link to={slide.link}> */}
+              <img src={slide.padam} alt={slide.item_name} />
+            {/* </Link> */}
           </SwiperSlide>
         ))}
       </Swiper>
-      <p className='stallitemname'>{slideData[activeIndex].name}</p>
-      <p className="stallitemprice">{slideData[activeIndex].price}</p>
-      <button className='stallbtn'>Order Now</button>
+      {sanam.length > 0 && (
+  <>
+    <p className='stallitemname'>{sanam[activeIndex]?.item_name}</p>
+    <p className="stallitemprice">Rs.{sanam[activeIndex]?.item_price}</p>
+  </>
+)}
+
+      <button onClick={orderItem} className='stallbtn'>Order Now</button>
       </div>
       
     </div>

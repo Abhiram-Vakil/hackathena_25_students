@@ -17,6 +17,7 @@ dayjs.extend(timezone);
 
 function Home() {
   const [ann,setAnn] = useState([]);
+  const [loading,setLoading] = useState(false);
   const{user} = useUser();
   const navigate = useNavigate();
 
@@ -26,9 +27,10 @@ function Home() {
       navigate('/login');
     }
     fetchData();
-  },[ann]);
+  },[]);
 
   const fetchData = async () => {
+    setLoading(true);
     const {data,error} = await supabase.from('announcment').select('*');
     if (error)
     {
@@ -37,6 +39,7 @@ function Home() {
     else{
       setAnn(data);
     }
+    setLoading(false);
   }
 
 
@@ -63,13 +66,19 @@ function Home() {
     //     time: "08.36 am"
     //   },
     // ];
+    // if (loading)
+    // {
+    //   return(<div className='loader'></div>);
+    // }
   return (
     <div >
+
       <Header/>
       <Titles title={'Announcements'} sub={'Innovators check what’s live at HackAthena!'} />
       <div className='panels'>
+        {loading && <div className="container"><div class="loader"></div></div>}
       {ann.map(( item, index) => (
-        <Panel key={index} head={item.title} para={item.desc} time={dayjs(item.times).format('DD/MM/YYYY HH:mm:ss A')} />
+        <Panel className="panelu" key={index} head={item.title} para={item.desc} time={dayjs(item.times).format('DD/MM/YYYY HH:mm:ss A')} />
       ))}
       </div>
       
