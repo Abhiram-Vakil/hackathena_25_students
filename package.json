@@ -13,11 +13,13 @@
     "@ionic/react": "^8.4.3",
     "@ionic/react-router": "^8.4.3",
     "@supabase/supabase-js": "^2.48.1",
+    "antd": "^5.24.1",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
     "ionicons": "^7.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-onesignal": "^3.0.1",
     "react-router-dom": "^7.1.5",
     "swiper": "^11.2.4",
     "workbox-window": "^7.3.0"

@@ -6,9 +6,10 @@ import profileicon from '../../assets/profileicon.svg'
 import profiledp from '../../assets/profile.png';
 import { useUser } from '../../context/UserContext/UserContext';
 import supabase from '../../../supabase_config';
-import { useState } from 'react'
+import { useState,useRef } from 'react'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { Button, message } from 'antd';
 function Profile() {
 
   const [prof,setProf] = useState([]);
@@ -16,6 +17,9 @@ function Profile() {
   const [loading,setLoading] = useState(false);
   const {user,logout} = useUser();
   const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
+  const fetchingRef = useRef(false);
+
 
   useEffect(() => {
     if (!user) {
@@ -33,7 +37,18 @@ function Profile() {
   }
 
   const fetchProf = async () => {
+
+    if (fetchingRef.current) return; // Prevent multiple calls
+  fetchingRef.current = true;
+
     setLoading(true);
+
+    const loaderOne = messageApi.open({
+      type: 'loading',
+      content: 'Fetching Profile',
+      duration: 0,
+    });
+
     console.log(user?.id)
     const {data : dataT,error : errorT} = await supabase.from('team_details').select('team_name,project_name ,team_id').eq('leader_id', user?.id).single();
     if (errorT){
@@ -51,16 +66,19 @@ function Profile() {
     else{
       setPart(dataP);
     }
+    loaderOne();
     setLoading(false);
+    fetchingRef.current = false;
   // console.log(prof);
   }
-  if (loading)
-  {
-    return(<div className="amme"><Header/>
-      <Titles title="Profile" sub="It’s all about you !"/><div className="container"><div class="loader"></div></div></div>)
-  }
+  // if (loading)
+  // {
+  //   return(<div className="amme"><Header/>
+  //     <Titles title="Profile" sub="It’s all about you !"/><div className="container"><div class="loader"></div></div></div>)
+  // }
   return (
     <div>
+      {contextHolder}
         <Header/>
         <Titles title="Profile" sub="It’s all about you !"/>
         <div className='profilesection'>
