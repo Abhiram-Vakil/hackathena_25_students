@@ -102,3 +102,43 @@ line-height: normal;
     font-weight: 600;
     line-height: normal;
   }
+
+  .counter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .counter-container button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 7px;
+    background: rgba(186, 4, 3, 0.77);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .counter-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .counter-container p {
+    color:black;
+    font-family: "Titillium Web";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
