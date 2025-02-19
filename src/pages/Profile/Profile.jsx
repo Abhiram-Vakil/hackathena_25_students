@@ -85,10 +85,11 @@ function Profile() {
           <img src={profiledp} alt=""  />
           <h1>{prof.team_name}</h1>
           <h2>{prof.project_name}</h2>
+          <button className='vannit' onClick={handleLogout} >logout</button>
         </div>
         <h1 className='member'>Members</h1>
         <div className="memberssection">
-         
+  
   <div className="sec1">
     {part.slice(0, 2).map((item, index) => (
       <div key={index} className="indmember">
@@ -109,8 +110,6 @@ function Profile() {
   )}
 </div>
 
-
-        <button className='vannit' onClick={handleLogout} >logout</button>
     </div>
   )
 }

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 20px;
     height: 100%;
     gap: 113px;
     justify-content: space-between;
@@ -59,7 +58,6 @@
     flex-shrink: 0;
     border-radius: 6px;
     border: 1px solid #05050A;
-    color: rgba(0, 0, 0, 0.43);
     font-family: "Titillium Web";
     font-size: 15px;
     font-style: normal;
@@ -68,6 +66,13 @@
     padding: 0px 13px 0px 13px;
 }
 
+.inputSection input::placeholder {
+    color: gray;
+
+  }
+  
+
+  
 
 
 .loginButton1{
