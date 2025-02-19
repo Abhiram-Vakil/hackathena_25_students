@@ -19,6 +19,7 @@ const TELEGRAM_BOT_TOKEN =  import.meta.env.VITE_TELE_TOKEN ;
 // const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELE_IDS;
 
 function Stall() {
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const [sanam,setSanam]  = useState([]);
   const {user} = useUser();
@@ -133,7 +134,17 @@ function Stall() {
       {sanam.length > 0 && (
   <>
     <p className='stallitemname'>{sanam[activeIndex]?.item_name}</p>
-    <p className="stallitemprice">Rs.{sanam[activeIndex]?.item_price}</p>
+    <p className="stallitemprice">Rs.{sanam[activeIndex]?.item_price*quantity}</p>
+    <div className="counter-container">
+      <button 
+        onClick={() => setQuantity(quantity - 1)} 
+        disabled={quantity === 1}
+      >
+        -
+      </button>
+      <p>{quantity}</p>
+      <button onClick={() => setQuantity(quantity + 1)}>+</button>
+    </div>
   </>
 )}
 
