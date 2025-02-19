@@ -50,6 +50,7 @@
     display: flex;
     flex-direction: column;
     gap:21px ;
+    margin-bottom: 120px;
 }
 
 .sec1 ,.sec2{
@@ -58,7 +59,7 @@
 }
 .sec2{
    margin-left:20%;
-   margin-bottom: 120px;
+   
 }
 .sec1{
     margin-left:5%;
@@ -134,4 +135,14 @@
   @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(10px); }
     100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .vannit{
+    display: flex;
+    height: 40px;
+    width: auto;
+    align-items: center;
+    justify-content:center;
+    margin-top: 20px;
+
   }
