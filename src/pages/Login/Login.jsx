@@ -29,10 +29,6 @@ function Login() {
 
     if (error) {
       console.error('Login attempt failed!', error);
-      messageApi.open({
-        type: 'error',
-        content: 'Login Failed!',
-      });
       
     }
     else

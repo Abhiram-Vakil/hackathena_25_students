@@ -13,14 +13,16 @@ import { useUser } from '../../context/UserContext/UserContext';
 import supabase from '../../../supabase_config';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { Button, message, Space } from 'antd';
 
 const TELEGRAM_BOT_TOKEN =  import.meta.env.VITE_TELE_TOKEN ;
-const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELE_IDS;
+// const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELE_IDS;
 
 function Stall() {
   const navigate = useNavigate();
   const [sanam,setSanam]  = useState([]);
   const {user} = useUser();
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(()=>
   {
@@ -42,7 +44,8 @@ function Stall() {
 
     const order = {
       user_id : user?.id,
-      item_name : sanam[activeIndex]?.item_name
+      item_name : sanam[activeIndex]?.item_name,
+      item_price :sanam[activeIndex]?.item_price
     }
 
     const {data,error}  = await supabase.from('orders').insert([order]);
@@ -51,17 +54,20 @@ function Stall() {
       console.log("Ordering failed !");
     }
     else{
-      alert("Order placed !");
+      messageApi.open({
+        type: 'success',
+        content: 'Order Placed ! We will reach Shortly!',
+      });
       sendTelegramMessage(order);
     }
   };
 
   const sendTelegramMessage = async(order) => {
-    const message = `🛒 New Order Received!\n\n📌 Item: ${order.item_name}\n👤 Ordered by: ${user?.email || "Unknown User"}`;
+    const message = `🛒 New Order Received!\n\n📌 Item: ${order.item_name}\n👤💰 Price: Rs.${order.item_price}\n Ordered by: ${user?.email || "Unknown User"}`;
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
 
-    const chatIds = [1521228209]; // Add your additional chat IDs here
+    const chatIds = [1521228209,7744476551]; // Add your additional chat IDs here
 
     try {
       for (let chatId of chatIds) {
@@ -102,8 +108,10 @@ function Stall() {
 
   
   return (
+    
    
     <div>
+      {contextHolder}
       <Header/>
       <Titles title="The Shop" sub="Need a break ! Call us we will be here !"/>
       <div className='kada'>
