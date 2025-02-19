@@ -50,7 +50,7 @@ function Login() {
         </div>
        
         <div className='inputSection'>
-            <input onChange={handleEmail} type="text" placeholder="Enter Team mail"/>
+            <input onChange={handleEmail} type="email" placeholder="Enter Team mail"/>
             <input onChange={handlePassword} type="password" placeholder="Enter Password" ty/>
         </div>
         
