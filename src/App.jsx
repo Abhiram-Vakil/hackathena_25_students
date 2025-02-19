@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -9,9 +9,19 @@ import Profile from './pages/Profile/Profile';
 import Project from './pages/Project/Project';
 import StallOpen from './components/StallOpen/StallOpen';
 import { UserProvider } from './context/UserContext/UserContext';
+import OneSignal from 'react-onesignal';
 
 function AppContent() {
+
   const location = useLocation();
+
+  useEffect(() => {
+    OneSignal.init({
+      appId: "54669f06-be87-4386-9fe4-57f5bd87eb6a",
+      serviceWorkerPath: "/OneSignalSDKWorker.js",
+    });
+  }, []);
+
   return (
     <UserProvider>
     <>
