@@ -167,7 +167,7 @@ import { useNavigate } from 'react-router-dom'
             {/* <Input className='ed_in' value={p_name} placeholder="Participant Name" /> */}
             
             <Select
-            defaultValue=""
+            defaultValue="select"
             style={{ width: 120 }}
             onChange={handleChange}
             options={partDet.map((item) => ({
