@@ -13,9 +13,11 @@ import { useUser } from '../../context/UserContext/UserContext';
 import supabase from '../../../supabase_config';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { Button, message, Space } from 'antd';
+import { Button, message, Space ,Popconfirm } from 'antd';
 
 const TELEGRAM_BOT_TOKEN =  import.meta.env.VITE_TELE_TOKEN ;
+
+
 // const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELE_IDS;
 
 function Stall() {
@@ -36,6 +38,14 @@ function Stall() {
     fetchSanam();
   });
 
+  const cancel = (e) => {
+    console.log(e);
+    messageApi.open({
+      type: 'error',
+      content: 'Ordering Cancelled',
+    });
+  };
+
   const orderItem = async () => {
     if(!user)
     {
@@ -46,7 +56,8 @@ function Stall() {
     const order = {
       user_id : user?.id,
       item_name : sanam[activeIndex]?.item_name,
-      item_price :sanam[activeIndex]?.item_price
+      item_price :sanam[activeIndex]?.item_price*quantity,
+      quantity:quantity
     }
 
     const {data,error}  = await supabase.from('orders').insert([order]);
@@ -64,7 +75,7 @@ function Stall() {
   };
 
   const sendTelegramMessage = async(order) => {
-    const message = `🛒 New Order Received!\n\n📌 Item: ${order.item_name}\n👤💰 Price: Rs.${order.item_price}\n Ordered by: ${user?.email || "Unknown User"}`;
+    const message = `🛒 New Order Received!\n\n📌 Item: ${order.item_name}\n👤💰 Price: Rs.${order.item_price}\n💰 Quantity: ${order.quantity}\n Ordered by: ${user?.email || "Unknown User"}`;
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
 
@@ -126,7 +137,7 @@ function Stall() {
         {sanam.map((slide, index) => (
           <SwiperSlide key={index}>
             {/* <Link to={slide.link}> */}
-              <img src={slide.padam} alt={slide.item_name} />
+              <img className='paaadam' src={slide.padam} alt={slide.item_name} />
             {/* </Link> */}
           </SwiperSlide>
         ))}
@@ -147,8 +158,17 @@ function Stall() {
     </div>
   </>
 )}
-
-      <button onClick={orderItem} className='stallbtn'>Order Now</button>
+      <Popconfirm
+    title="Confirm Order"
+    description="Are you sure to order this item?"
+    onConfirm={orderItem}
+    onCancel={cancel}
+    okText="Yes"
+    cancelText="No"
+  >
+    <button className='stallbtn'>Order Now</button>
+  </Popconfirm>
+      
       </div>
       
     </div>

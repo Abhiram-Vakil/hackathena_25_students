@@ -12,6 +12,10 @@
     font-weight: bold;
     color: #fff;
   }
+  .paaadam
+  {
+    object-fit: contain;
+  }
   
   .swiper-slide:nth-child(1n) {
     background-color: rgb(206, 17, 17);
