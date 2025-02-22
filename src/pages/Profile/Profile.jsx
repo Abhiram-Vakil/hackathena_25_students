@@ -92,7 +92,7 @@ function Profile() {
   
   <div className="sec1">
     {part.slice(0, 2).map((item, index) => (
-      <div key={index} className="indmember">
+      <div key={index} className="indmember" onClick={() => navigate("/id", { state: { content1: item.name,content2: prof.team_name } })}>
         <img src={profileicon} alt="" />
         <p>{item.name}</p>
       </div>
@@ -101,7 +101,7 @@ function Profile() {
   {part.length > 2 && (
     <div className="sec2">
       {part.slice(2).map((item, index) => (
-        <div key={index} className="indmember">
+        <div key={index} className="indmember" onClick={() => navigate("/id", { state: { content1: item.name,content2: prof.team_name } })}>
           <img src={profileicon} alt="" />
           <p>{item.name}</p>
         </div>

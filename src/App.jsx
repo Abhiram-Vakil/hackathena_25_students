@@ -10,6 +10,7 @@ import Project from './pages/Project/Project';
 import StallOpen from './components/StallOpen/StallOpen';
 import { UserProvider } from './context/UserContext/UserContext';
 import OneSignal from 'react-onesignal';
+import Idcard from './pages/ID/idcard';
 
 function AppContent() {
 
@@ -33,6 +34,7 @@ function AppContent() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/project" element={<Project />} />
         <Route path="/stallopen" element={<StallOpen />} />
+        <Route path="/id" element={<Idcard/>} />
       </Routes>
       {location.pathname !== "/login" && <Navbar className='mindaa' />}
 

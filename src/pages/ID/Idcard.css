@@ -1,0 +1,82 @@
+.idtag{
+    position:absolute;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+}
+
+.maincard{
+    border-radius: 30px;
+    background: #B20100;
+    width: 370px;
+    height: 557px;
+}
+
+.icard{
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:194px ;
+    position: absolute;
+}
+
+.maincard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ota{
+    background: #FFF;
+    width: 35.383px;
+    height: 35.383px;
+    border-radius: 100%;
+    position: absolute;
+    top:29.55px;
+}
+.idh{
+    height: 30.996px;
+    margin-top: 32px;
+
+}
+.idname{
+    height: 132px;
+    word-wrap: break-word;
+    width: 328px;
+    color: #FFF;
+    -webkit-text-stroke-width: 0.23px;
+    -webkit-text-stroke-color: #FFF;
+    font-family: Doto;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal; 
+    margin-left: 22px;   
+    margin-top: 28px;
+    margin-bottom: 69px;
+}
+
+.teamname{
+    
+    color: #FFF;
+    font-family: "Titillium Web";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;  
+    margin-top: 13px; 
+    align-self: flex-start;
+    margin-left: 33px;
+}
+
+.profilephoto{
+    position: absolute;
+    bottom: 77px;
+}
+
+.veruthe{
+    margin-top: 700px;
+    height: 50px;
+}
