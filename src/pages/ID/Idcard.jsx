@@ -5,14 +5,17 @@ import tag from "../../assets/idtag.svg"
 import idh from "../../assets/idheader.svg"
 import sqimg from "../../assets/idsqui.png"
 import alan from "../../assets/aluuu.png"
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import back from "../../assets/backbtn.svg"
 
 function Idcard() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { content1, content2 } = location.state || {};
   return (
     <div>
       <Header/>
+     
       <div className='icard'>
         <div className='maincard'>
             <img src={idh} alt="" className='idh' />
@@ -26,7 +29,11 @@ function Idcard() {
       <div  className='idtag'>
       <img src={tag} alt="" />
       </div>
+      <div onClick={() => navigate(-1)} style={{ cursor: "pointer" }}>
+  <img src={back} alt="Go Back" className="backbtn" />
+</div>
       <div className='veruthe'></div>
+      
     </div>
   )
 }
