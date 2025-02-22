@@ -5,13 +5,14 @@
 import { useState } from 'react'
 import supabase from '../../../supabase_config'
 import { useUser } from '../../context/UserContext/UserContext'
-import { Button, message,Input } from 'antd';
+import { Button, message,Input,Select } from 'antd';
 import { useNavigate } from 'react-router-dom'
   // import Section from '../../components/Section/Section'
 
   function Project() {
     const[workSpace,setWorkSpace] = useState([]);
     const [driveL,setDriveL] = useState("");
+    const [partDet,setPartDet] = useState([]);
     const [edit,setEdit] = useState(false);
     const [p_name,setP_name] = useState('');
     const [w_title,setW_title] = useState('');
@@ -19,6 +20,10 @@ import { useNavigate } from 'react-router-dom'
     const {user} = useUser();
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+    setP_name(value)
+  };
 
     useEffect(()=> {
       if(!user)
@@ -73,9 +78,9 @@ import { useNavigate } from 'react-router-dom'
     //     time: "12.30 pm"
     //   }
     // ];
-    function handlePart(e){
-      setP_name(e.target.value)
-    }
+    // function handlePart(e){
+    //   setP_name(e.target.value)
+    // }
     function handleWtit(e)
     {
       setW_title(e.target.value)
@@ -86,6 +91,8 @@ import { useNavigate } from 'react-router-dom'
       const addInfo = () =>
       {
         setEdit(true)
+        fetchParticipants()
+        console.log(partDet)
         
       }
       const storeData = async () => {
@@ -111,7 +118,17 @@ import { useNavigate } from 'react-router-dom'
       {
         setEdit(false)
       }
-
+      const fetchParticipants = async () => {
+        console.log("User ID:", user?.id);
+        const{data,error} = await supabase.from('participant').select('name').eq('leader_id',user?.id)
+        if (error){
+          console.log(error)
+        }
+        else{
+          setPartDet(data);
+          console.log(data)
+        }
+      }
     return (
       <div>
           <Header/>
@@ -147,7 +164,18 @@ import { useNavigate } from 'react-router-dom'
           </div> */}
         </div>
           :<div className="editable">
-            <Input onChange={handlePart} className='ed_in' value={p_name} placeholder="Participant Name" />
+            {/* <Input className='ed_in' value={p_name} placeholder="Participant Name" /> */}
+            
+            <Select
+            defaultValue=""
+            style={{ width: 120 }}
+            onChange={handleChange}
+            options={partDet.map((item) => ({
+              value: item.name,
+              label: item.name,
+            }))}
+          />
+            
             <Input onChange={handleWtit} className='ed_in' value={w_title} placeholder="Title" />
             <Input onChange={handleWdesc} className='ed_in' value={w_desc} placeholder="Description" />
             <Button onClick={editInfoCancel}>Back</Button>
