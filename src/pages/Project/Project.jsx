@@ -6,8 +6,23 @@ import { useState } from 'react'
 import supabase from '../../../supabase_config'
 import { useUser } from '../../context/UserContext/UserContext'
 import { Button, message,Input,Select } from 'antd';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
   // import Section from '../../components/Section/Section'
+
+  const firebaseConfig = {
+    apiKey: import.meta.env.VITE_F_API_KEY,
+    authDomain: import.meta.env.VITE_F_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_F_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_F_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_F_MESSAGE,
+    appId: import.meta.env.VITE_F_APP_ID,
+    measurementId: import.meta.env.VITE_F_MEASURE
+  };
+
+  const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
   function Project() {
     const[workSpace,setWorkSpace] = useState([]);
@@ -17,6 +32,9 @@ import { useNavigate } from 'react-router-dom'
     const [p_name,setP_name] = useState('');
     const [w_title,setW_title] = useState('');
     const [w_desc,setW_desc] = useState('');
+    const [poster,setPoster] = useState(null);
+    const [posterURL, setPosterURL] = useState("");
+    const [uploading, setUploading] = useState(false);
     const {user} = useUser();
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
@@ -87,6 +105,40 @@ import { useNavigate } from 'react-router-dom'
     }
     function handleWdesc(e){
       setW_desc(e.target.value)
+    }
+
+    const handleFileChange = async(e) => {
+      const file = e.target.files[0];
+      if(!file){
+        console.log("Please select a file !");
+        return;
+      }
+      if(file.size>2*1024*1024){
+        console.log("File size must be less than 1 MB");
+        return;
+      }
+      const img = new Image();
+      img.src=URL.createObjectURL(file);
+      img.onload = async() => {
+        setPoster(file)
+        setUploading(true);
+        const storageRef = ref(storage,`utils/${file.name}`);
+        try{
+          await uploadBytes(storageRef,file);
+          const downloadUrl=await getDownloadURL(storageRef);
+          setPosterURL(downloadUrl)
+          setW_desc(downloadUrl)
+          setUploading(false);
+
+        }
+        catch(uploadError){
+              console.log("upload error");
+              setUploading(false);
+        }
+      };
+      img.onerror = () => {
+        setError("Invalid image file.");
+      };
     }
       const addInfo = () =>
       {
@@ -178,6 +230,8 @@ import { useNavigate } from 'react-router-dom'
             
             <Input onChange={handleWtit} className='ed_in' value={w_title} placeholder="Title" />
             <Input onChange={handleWdesc} className='ed_in' value={w_desc} placeholder="Description" />
+            {/* <Button onClick={handleFileChange}>Upload File</Button> */}
+            <Input type='file' accept='image/*' onChange={handleFileChange}/>
             <Button onClick={editInfoCancel}>Back</Button>
             <Button className='b1' onClick={storeData}>Submit</Button>
         </div>}
