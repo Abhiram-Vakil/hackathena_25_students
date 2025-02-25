@@ -10,6 +10,10 @@ import { useState,useRef } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button, message } from 'antd';
+import axios from 'axios';
+
+const TELEGRAM_BOT_TOKEN =  import.meta.env.VITE_TELE_TOKEN ;
+
 function Profile() {
 
   const [prof,setProf] = useState([]);
@@ -19,6 +23,7 @@ function Profile() {
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const fetchingRef = useRef(false);
+  const [table,setTable] = useState('');
 
 
   useEffect(() => {
@@ -29,7 +34,49 @@ function Profile() {
     }
     // Removed `prof` from dependencies to prevent infinite re-renders
   }, [user]); 
+
+  function handleMentor(){
+    if(!table)
+    {
+      console.log("Table not foud");
+
+    }
+    else
+    {
+      sendTelegramMessage(table);
+    }
+  }
   
+  const sendTelegramMessage = async(table_no) => {
+    const message = `📌 Need a Mentor for table ${table_no}`;
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+
+    const chatIds = [1521228209,7744476551]; // Add your additional chat IDs here
+
+    try {
+      for (let chatId of chatIds) {
+        await axios.post(url, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: "Markdown",
+        });
+        console.log(`Notification sent to chat ID: ${chatId}`);
+      }
+      messageApi.open({
+        type: 'success',
+        content: 'Called Mentor !',
+      });
+    }
+    catch(error)
+    {
+      console.error("Failed tele",error);
+      messageApi.open({
+        type: 'error',
+        content: 'Failed Calling mentor !',
+      });
+    }
+  };
 
   const handleLogout = () => {
     logout();
@@ -50,12 +97,13 @@ function Profile() {
     });
 
     console.log(user?.id)
-    const {data : dataT,error : errorT} = await supabase.from('team_details').select('team_name,project_name ,team_id').eq('leader_id', user?.id).single();
+    const {data : dataT,error : errorT} = await supabase.from('team_details').select('team_name,project_name ,team_id,table_no').eq('leader_id', user?.id).single();
     if (errorT){
       console.log("Failed brinigng data !",errorT);
     }
     else
     setProf(dataT);
+    setTable(dataT.table_no);
 
     const {data : dataP,error : errorP} = await supabase.from('participant').select('name').eq('team_id',dataT.team_id);
 
@@ -85,6 +133,8 @@ function Profile() {
           <img src={profiledp} alt=""  />
           <h1>{prof.team_name}</h1>
           <h2>{prof.project_name}</h2>
+          <h2>{prof.table_no}</h2>
+          <button className='vannit' onClick={handleMentor} >Call Mentor</button>
           <button className='vannit' onClick={handleLogout} >logout</button>
         </div>
         <h1 className='member'>Members</h1>

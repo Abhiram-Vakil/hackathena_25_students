@@ -12,12 +12,17 @@
     font-weight: bold;
     color: #fff;
   }
-  .paaadam
-  {
-    object-fit: contain;
+  .paaadam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
-  .swiper-slide:nth-child(1n) {
+  .swiper-slide {
+    background-color: rgb(204, 204, 204);
+  }
+  
+  /* .swiper-slide:nth-child(1n) {
     background-color: rgb(206, 17, 17);
   }
   
@@ -55,7 +60,7 @@
   
   .swiper-slide:nth-child(10n) {
     background-color: rgb(54, 94, 77);
-  }
+  } */
 
   .mySwiper{
    margin-top: 50px;
