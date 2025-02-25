@@ -44,6 +44,8 @@ const storage = getStorage(app);
   };
 
     useEffect(()=> {
+      console.log(user);
+      
       if(!user)
       {
         navigate('/login')
