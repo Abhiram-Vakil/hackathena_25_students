@@ -97,7 +97,7 @@ function Profile() {
     });
 
     console.log(user?.id)
-    const {data : dataT,error : errorT} = await supabase.from('team_details').select('team_name,project_name ,team_id,table_no').eq('leader_id', user?.id).single();
+    const {data : dataT,error : errorT} = await supabase.from('team_details').select('team_name,project_name ,leader_id,table_no').eq('leader_id', user?.id).single();
     if (errorT){
       console.log("Failed brinigng data !",errorT);
     }
@@ -105,7 +105,7 @@ function Profile() {
     setProf(dataT);
     setTable(dataT.table_no);
 
-    const {data : dataP,error : errorP} = await supabase.from('participant').select('name').eq('team_id',dataT.team_id);
+    const {data : dataP,error : errorP} = await supabase.from('participant').select('name').eq('leader_id',dataT.leader_id);
 
     if (errorP)
     {
