@@ -6,12 +6,14 @@ import "./Login.css";
 import supabase from '../../../supabase_config';
 import { useUser } from '../../context/UserContext/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { Button, message } from 'antd';
 
 function Login() {
   const {user,login} = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+   const [messageApi, contextHolder] = message.useMessage();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -29,6 +31,10 @@ function Login() {
 
     if (error) {
       console.error('Login attempt failed!', error);
+      messageApi.open({
+        type: 'error',
+        content: 'Failed Login Attempt !',
+      });
       
     }
     else
@@ -40,7 +46,9 @@ function Login() {
   };
 
   return (
+    
     <div className='loginPage'>
+      {contextHolder}
       <div className='logintop'>
         <img src={logo} alt="" className='logo' />
         <img src={squid} alt="" className='squid' />
