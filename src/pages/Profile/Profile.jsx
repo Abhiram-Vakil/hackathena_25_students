@@ -105,7 +105,7 @@ function Profile() {
     setProf(dataT);
     setTable(dataT.table_no);
 
-    const {data : dataP,error : errorP} = await supabase.from('participant').select('name').eq('leader_id',dataT.leader_id);
+    const {data : dataP,error : errorP} = await supabase.from('participant').select('name,bg_img').eq('leader_id',dataT.leader_id);
 
     if (errorP)
     {
@@ -142,7 +142,7 @@ function Profile() {
   
   <div className="sec1">
     {part.slice(0, 2).map((item, index) => (
-      <div key={index} className="indmember" onClick={() => navigate("/id", { state: { content1: item.name,content2: prof.team_name } })}>
+      <div key={index} className="indmember" onClick={() => navigate("/id", { state: { content1: item.name,content2: prof.team_name,content3:item.bg_img } })}>
         <img src={profileicon} alt="" />
         <p>{item.name}</p>
       </div>

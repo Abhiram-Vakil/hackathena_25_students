@@ -11,7 +11,7 @@ import back from "../../assets/backbtn.svg"
 function Idcard() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { content1, content2 } = location.state || {};
+  const { content1, content2,content3 } = location.state || {};
   return (
     <div>
       <Header/>
@@ -22,7 +22,7 @@ function Idcard() {
             <div className='ota'></div>
             <h1 className='idname'>{content1}</h1>
             <img src={sqimg} alt="" />
-            <img src={alan} alt="" className='profilephoto'/>
+            <img src={content3} alt="" className='profilephoto'/>
             <h2 className='teamname'>{content2}</h2>
         </div>
       </div>
