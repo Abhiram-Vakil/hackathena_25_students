@@ -1,26 +1,33 @@
 .idtag{
     position:absolute;
-    top:0;
+    top:1px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 98%;
 }
-
+.id{
+display: flex;
+flex-direction: column;
+}
 .maincard{
     border-radius: 30px;
     background: #B20100;
     width: 370px;
     height: 557px;
+    margin-top:194.5px;
 }
 
 .icard{
+    top: -5px;
     width: 98%;
     display: flex;
     align-items: center;
     justify-content: center;
-    top:194px ;
     position: absolute;
+    background-color: white;
+    padding-bottom: 40px;
+    
 }
 
 .maincard{
@@ -34,7 +41,7 @@
     height: 35.383px;
     border-radius: 100%;
     position: absolute;
-    top:29.55px;
+    margin-top: 30px;
 }
 .idh{
     height: 30.996px;
@@ -73,8 +80,7 @@
 
 .profilephoto{
     position: absolute;
-    bottom: 77px;
-    height: 294px;
+    bottom: 117px;
 }
 
 .veruthe{
@@ -83,5 +89,35 @@
 }
 .backbtn{
     position: absolute;
+    margin-top: 30px;
     margin-left: 17px;
+}
+
+.sharebtn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-top: 780px;
+    padding: 20px;
+    margin-bottom: 120px;
+    border-radius: 7px;
+    background: #B20100;
+    color: #FFF;
+    font-family: "Titillium Web";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    height: 50px;
+    width: max-content;
+    align-self: center;
+}
+.shareicon{
+    height: 20px;
+    
+}
+.profilephoto{
+    height: 294px;
 }
